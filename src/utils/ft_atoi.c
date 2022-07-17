@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 06:21:23 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 07:02:33 by tgoel            ###   ########.fr       */
+/*   Created: 2022/07/17 07:04:36 by tgoel             #+#    #+#             */
+/*   Updated: 2022/07/17 07:29:38 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
-char	*ft_strdup(char *str)
+int	ft_atoi(char *str)
 {
-	int		i;
-	char	*new_str;
+	int	neg;
+	int	i;
+	int	num;
 
-	new_str = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	if (!new_str)
-		return (NULL);
 	i = 0;
-	while (str[i])
+	neg = 1;
+	num = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		new_str[i] = str[i];
+		if (str[i] == '-')
+			neg *= -1;
 		i++;
 	}
-	new_str[i] = '\0';
-	return (new_str);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + '0';
+		i++;
+	}
+	return (num * neg);
 }

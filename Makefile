@@ -1,11 +1,11 @@
-MSRC	= main.c
-USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c
+MSRC	= main.c  set_ms_correct.c
+USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c
 
 MDIR	= ./src/main
 UDIR	= ./src/utils
 
-MSRCS	= $(addprefix $(MDIR),/$(MSRC))
-USRCS	= $(addprefix $(UDIR),/$(USRC))
+MSRCS	= $(addprefix $(MDIR)/,$(MSRC))
+USRCS	= $(addprefix $(UDIR)/,$(USRC))
 
 FILES	= $(MSRCS) $(USRCS)
 OBJS	= $(FILES:.c=.o)

@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   set_ms_correct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 06:21:23 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 07:02:33 by tgoel            ###   ########.fr       */
+/*   Created: 2022/07/17 07:26:27 by tgoel             #+#    #+#             */
+/*   Updated: 2022/07/17 07:37:55 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
-char	*ft_strdup(char *str)
+int	set_correct_time(t_prog *prog)
 {
-	int		i;
-	char	*new_str;
+	int	i;
+	int	current_ex;
 
-	new_str = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		new_str[i] = str[i];
-		i++;
-	}
-	new_str[i] = '\0';
-	return (new_str);
+	i = prog->times_values->start_time_ms;
+	gettimeofday(prog->time, NULL);
+	prog->times_values->current_time_ms = prog->time->tv_usec;
+	current_ex = prog->times_values->current_time_ms - i;
+	return (current_ex);
 }

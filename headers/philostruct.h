@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 05:15:04 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 06:47:48 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/17 07:38:44 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@
 # define E_BASE "./philo [error]: "
 
 /* win execution time */
-# define DSTRLEN(s) (sizeof(s)/sizeof(s[0]) - sizeof(s[0]))
-# define W_ERROR write(2, E_BASE, DSTRLEN(E_BASE))
+# define W_ERROR write(2, E_BASE, ft_strlen(E_BASE))
 
-typedef struct S_timeval
+typedef struct	S_times
 {
-	int			start_time;
-	time_t		tv_sec;
-	suseconds_t	tv_usec;
-}	t_timeval;
+	long long	start_time_ms;
+	long long	current_time_ms;
+	long long	current_prog_time;
+}	t_times;
 
 typedef struct	S_prog
 {
-	int	max_eat;
-	int	nb_philo;
-	int	t_die;
-	int	t_eat;
-	int	t_sleep;
-	int	nb_eat_r;
-	pthread_t *thread;
-	t_timeval *time;
+	int				max_eat;
+	int				nb_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				nb_eat_r;
+	pthread_t		*thread;
+	t_times			*times_values;
+	struct timeval	*time;
 }	t_prog;
 
 #endif
