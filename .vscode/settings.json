@@ -1,6 +1,8 @@
 {
 	"files.associations": {
-		"tk.h": "c",
-		"philostruct.h": "c"
+		"philostruct.h": "c",
+		"philo.h": "c",
+		"__locale": "c",
+		"unistd.h": "c"
 	}
 }

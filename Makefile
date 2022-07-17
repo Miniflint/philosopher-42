@@ -1,5 +1,5 @@
 MSRC	= main.c
-USRC	= ft_strlen.c handle_error.c
+USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c
 
 MDIR	= ./src/main
 UDIR	= ./src/utils
@@ -9,7 +9,7 @@ USRCS	= $(addprefix $(UDIR),/$(USRC))
 
 FILES	= $(MSRCS) $(USRCS)
 OBJS	= $(FILES:.c=.o)
-CFLAGS	= -Werror -Wextra -Wall
+CFLAGS	= -Werror -Wextra -Wall -pthread
 ifeq ($(DEBUG), debug)
 	CFLAGS += -fsanitize=address -g3
 endif

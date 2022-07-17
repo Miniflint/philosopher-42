@@ -2,7 +2,11 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c
 
 philo
+/.vscode/
 /.vscode
+/vscode
+/vscode/
+Dockerfile
 
 ### C ###
 # Prerequisites

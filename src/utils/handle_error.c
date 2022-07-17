@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 05:10:44 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 05:20:45 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/17 06:54:40 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	handle_error(char *str)
 {
-	write(2, E_BASE);
+	W_ERROR;
+	write(2, str, DSTRLEN(str));
+	exit(EXIT_FAILURE);
 }
