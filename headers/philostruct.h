@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philostruct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 04:49:23 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 05:22:05 by tgoel            ###   ########.fr       */
+/*   Created: 2022/07/17 05:15:04 by tgoel             #+#    #+#             */
+/*   Updated: 2022/07/17 05:18:11 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef PHILOSTRUCT_H
+# define PHILOSTRUCT_H
 
-# include "philostruct.h"
-# include "pthread.h"
-# include "unistd.h"
-
-/* main */
-
-
-/* utils */
-	/* errors */
-void	handle_error(char *str);
-int		ft_strlen(char *str);
+enum E_errors_msg
+{
+	E_BASE = "./philo [error]: "
+};
 
 #endif
