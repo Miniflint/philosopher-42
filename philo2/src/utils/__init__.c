@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/20 13:59:04 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/20 14:06:46 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void	__init__(t_prog *prog, char **args, int	max_eat)
 	rules->add_max_eat = max_eat;
 	__init__rules(rules, args);
 	philo = malloc(sizeof(philo) * rules->nb_philo);
+	if (!philo)
+		handle_error("Could not malloc philo");
 	__init__philo(philo, rules->nb_philo);
 	forks = malloc(sizeof(pthread_mutex_t) * rules->nb_philo);
+	if (!fork)
+		handle_error("Could not malloc fork");
 	prog->forks = forks;
 	prog->philo = philo;
 	prog->rules = rules;
