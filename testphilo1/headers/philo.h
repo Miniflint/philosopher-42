@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 04:49:23 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 07:30:30 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/17 10:58:51 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int		ft_atoi(char *str);
 	/* errors */
 void	handle_error(char *str);
 	/* init */
-void	__init__(t_prog *prog, char **args);
+void	__init__(t_prog *prog, char **args, int size);
 
 #endif

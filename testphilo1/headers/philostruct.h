@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 05:15:04 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/17 07:38:44 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/17 10:57:29 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct	S_times
 
 typedef struct	S_prog
 {
-	int				max_eat;
 	int				nb_philo;
 	int				t_die;
 	int				t_eat;

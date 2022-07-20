@@ -3,6 +3,7 @@
 		"philostruct.h": "c",
 		"philo.h": "c",
 		"__locale": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"stdio.h": "c"
 	}
 }
