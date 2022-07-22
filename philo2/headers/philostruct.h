@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/20 13:59:58 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/22 13:37:51 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 typedef struct S_philo
 {
 	int	id;
-	int	fork_right_id;
-	int	fork_left_id;
+	pthread_mutex_t	fork_right_id;
+	pthread_mutex_t	*fork_left_id;
 }	t_philo;
 
 typedef struct S_rule
@@ -40,7 +40,6 @@ typedef struct S_prog
 	long long		time_start;
 	t_rules			*rules;
 	t_philo			*philo;
-	pthread_mutex_t	*forks;
 }	t_prog;
 
 #endif

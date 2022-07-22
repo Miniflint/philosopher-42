@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/20 14:06:46 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/22 13:42:16 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,22 @@
 /*
 Rules creator: Done
 philo creator: Done
-Mutex creator: not yet
+Mutex creator: idk what to do yet
+
+i think mutex should be on 
 */
+
+void	__init__mutex(pthread_mutex_t *forks, int amount_philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < amount_philo)
+	{
+		pthread_mutex_init(&forks[i], NULL);
+		i++;
+	}
+}
 
 void	__init__philo(t_philo *philo, int amount_philo)
 {
@@ -26,15 +40,30 @@ void	__init__philo(t_philo *philo, int amount_philo)
 	while (i < amount_philo)
 	{
 		philo[i].id = i;
-		philo[i].fork_left_id = i + 1;
-		philo[i].fork_right_id = i;
-
-		if (i == 0)
-			philo[i].fork_left_id = amount_philo - 1;
-		if (i == amount_philo - 1)
-			philo[i].fork_left_id = 0;
+		pthread_mutex_init(&philo[i].fork_right_id, NULL);
 		i++;
 	}
+	i = 0;
+	while (i < amount_philo)
+	{
+		pthread_mutex_init(philo[i + 1].fork_left_id, NULL);
+		if (i == 0)
+			pthread_mutex_init(philo[amount_philo - 1].fork_left_id, NULL);
+		if (i == amount_philo - 1)
+			pthread_mutex_init(philo[0].fork_left_id, NULL);
+	}
+	// while (i < amount_philo)
+	// {
+	// 	philo[i].id = i;
+	// 	philo[i].fork_left_id = i + 1;
+	// 	philo[i].fork_right_id = i;
+
+	// 	if (i == 0)
+	// 		philo[i].fork_left_id = amount_philo - 1;
+	// 	if (i == amount_philo - 1)
+	// 		philo[i].fork_left_id = 0;
+	// 	i++;
+	// }
 }
 
 static void	__init__rules(t_rules *rules, char **argv)
@@ -49,7 +78,6 @@ static void	__init__rules(t_rules *rules, char **argv)
 
 void	__init__(t_prog *prog, char **args, int	max_eat)
 {
-	pthread_mutex_t	*forks;
 	t_philo			*philo;
 	t_rules			*rules;
 
@@ -59,13 +87,7 @@ void	__init__(t_prog *prog, char **args, int	max_eat)
 	rules->add_max_eat = max_eat;
 	__init__rules(rules, args);
 	philo = malloc(sizeof(philo) * rules->nb_philo);
-	if (!philo)
-		handle_error("Could not malloc philo");
 	__init__philo(philo, rules->nb_philo);
-	forks = malloc(sizeof(pthread_mutex_t) * rules->nb_philo);
-	if (!fork)
-		handle_error("Could not malloc fork");
-	prog->forks = forks;
 	prog->philo = philo;
 	prog->rules = rules;
 }
