@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/22 13:42:16 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/22 13:44:06 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ Mutex creator: idk what to do yet
 
 i think mutex should be on 
 */
-
-void	__init__mutex(pthread_mutex_t *forks, int amount_philo)
-{
-	int	i;
-
-	i = 0;
-	while (i < amount_philo)
-	{
-		pthread_mutex_init(&forks[i], NULL);
-		i++;
-	}
-}
-
 void	__init__philo(t_philo *philo, int amount_philo)
 {
 	int	i;
