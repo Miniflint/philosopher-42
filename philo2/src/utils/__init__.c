@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/22 13:44:06 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/22 13:44:41 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	__init__philo(t_philo *philo, int amount_philo)
 			pthread_mutex_init(philo[amount_philo - 1].fork_left_id, NULL);
 		if (i == amount_philo - 1)
 			pthread_mutex_init(philo[0].fork_left_id, NULL);
+		i++;
 	}
 	// while (i < amount_philo)
 	// {
