@@ -1,5 +1,11 @@
+R=\e[0;31m
+G=\e[0;32m
+B=\e[0;34m
+C=\e[0;36m
+W=\e[0;37m
+
 MSRC	= main.c
-USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c
+USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c free_mem.c
 
 MDIR	= ./src/main
 UDIR	= ./src/utils
@@ -19,20 +25,21 @@ CC		= gcc $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "nCompiling philo.."
+	@echo "\n$(G)Done$(W)"
 	@$(CC) $(OBJS) -o $(NAME)
 
 %.o: %.c
-	@echo "\nCompiling philo objects.."
+	@printf "$(G)Compiling philo objects.. $(C)$<$(W)                                \r"
 	@$(CC) -c $< -o $@
 
 clean:
-	@echo "Deleting objects.."
+	@echo "$(R)Deleting objects..$(W)"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo "Deleting executable.."
+	@echo "$(R)Deleting executable..$(W)"
 	@rm -f $(NAME)
+	@echo "$(R)Done$(W)"
 
 build:
 	docker build -t arch .

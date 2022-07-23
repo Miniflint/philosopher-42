@@ -28,6 +28,8 @@
 int		ft_strlen(char *str);
 char	*ft_strdup(char *str);
 int		ft_atoi(char *str);
+void	free_mem(t_prog *prog);
+
 	/* errors */
 void	handle_error(char *str);
 	/* init */

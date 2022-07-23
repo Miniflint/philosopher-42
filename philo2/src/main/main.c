@@ -22,4 +22,5 @@ int	main(int argc, char **argv)
 		__init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
 		__init__(&prog, argv, 0);
+	free_mem(&prog);
 }
