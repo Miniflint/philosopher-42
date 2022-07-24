@@ -12,13 +12,6 @@
 
 #include "../../headers/philo.h"
 
-/*
-Rules creator: Done
-philo creator: Done
-Mutex creator: idk what to do yet
-
-i think mutex should be on 
-*/
 void	__init__philo(t_philo *philo, int amount_philo)
 {
 	int	i;
@@ -43,10 +36,10 @@ void	__init__philo(t_philo *philo, int amount_philo)
 
 static void	__init__rules(t_rules *rules, char **argv)
 {
-		rules->nb_philo = ft_atoi(argv[1]);
-		rules->time_die = ft_atoi(argv[2]);
-		rules->time_eat = ft_atoi(argv[3]);
-		rules->time_sleep = ft_atoi(argv[4]);
+	rules->nb_philo = ft_atoi(argv[1]);
+	rules->time_die = ft_atoi(argv[2]);
+	rules->time_eat = ft_atoi(argv[3]);
+	rules->time_sleep = ft_atoi(argv[4]);
 	if (rules->add_max_eat)
 		rules->nb_t_eat = ft_atoi(argv[5]);
 }
