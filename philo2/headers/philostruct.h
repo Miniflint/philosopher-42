@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/22 14:48:02 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/24 22:28:28 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct S_rule
 typedef struct S_prog
 {
 	long long		time_start;
-	struct timeval		*value_time;
+	struct timeval	*value_time;
+	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;
 }	t_prog;

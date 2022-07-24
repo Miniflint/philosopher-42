@@ -4,7 +4,7 @@ B=\e[0;34m
 C=\e[0;36m
 W=\e[0;37m
 
-MSRC	= main.c
+MSRC	= main.c routine.c
 USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c free_mem.c
 
 ODIR	= ./obj
@@ -27,27 +27,27 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME)
-	@echo "\n$(G)Done$(W)"
+	@printf "\n$(G)Done$(W)%50s\n" " "
 
 %.o: %.c
 	@printf "$(G)Generating minishell objects... $(C)%-33.33s$(W)\r" $@
 	@$(CC) -c $< -o $@
 
 clean:
-	@echo "$(R)Deleting objects..$(W)"
+	@printf "$(R)Deleting objects..$(W)\n"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo "$(R)Deleting executable..$(W)"
+	@printf "$(R)Deleting executable..$(W)\n"
 	@rm -f $(NAME)
-	@echo "$(R)Done$(W)"
+	@printf "$(R)Done$(W)\n"
 
 build:
 	docker build -t arch .
 	docker run -ti arch
 
 prune:
-	@echo "Deleting docker"
+	@printf "Deleting docker"
 	@docker system prune -a --volumes
 
 re: fclean all

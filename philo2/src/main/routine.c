@@ -1,6 +1,10 @@
 #include "../../headers/philo.h"
 
-int	routine(t_prog *prog)
+void	*routine(void *var)
 {
-	
+	t_philo	*philo;
+
+	philo = (t_philo *)var;
+	printf("test from thread: %i\n", philo->id);
+	return (0);
 }

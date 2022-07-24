@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/20 13:06:14 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/24 22:37:56 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 
 # include "colordefining.h"
 # include "philostruct.h"
+
+/* main */
+void	*routine(void *var);
 
 /* utils */
 int		ft_strlen(char *str);

@@ -6,15 +6,33 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/22 14:25:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/24 22:55:54 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
+int	create_threads(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	while (i < prog->rules->nb_philo)
+	{
+		pthread_create(&prog->threads[i], NULL, &routine, &prog->philo[i]);
+		i++;
+	}	i = 0;
+	while (i < prog->rules->nb_philo)
+	{
+		pthread_join(prog->threads[i], NULL);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	int	c_init;
+	int		c_init;
 	t_prog	prog;
 
 	c_init = 1;
@@ -27,6 +45,7 @@ int	main(int argc, char **argv)
 		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
 		c_init = __init__(&prog, argv, 0);
+	create_threads(&prog);
 	free_mem(&prog);
 	return (c_init);
 }

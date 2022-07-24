@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/22 14:31:25 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/24 22:50:20 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@ static int	__init__time(t_prog *prog)
 {
 	int c_time;
 
+	prog->value_time = malloc(sizeof(struct timeval));
+	if (!prog->value_time)
+	{
+		handle_error("Error mallocing timeval");
+		return (0);
+	}
 	c_time = gettimeofday(prog->value_time, NULL);
-	prog->time_start = prog->value_time->tv_usec * 1000;
+	prog->time_start = (long long)prog->value_time->tv_usec;
 	return (c_time + 1);
 }
 
@@ -54,6 +60,15 @@ static void	__init__rules(t_rules *rules, char **argv)
 		rules->nb_t_eat = ft_atoi(argv[5]);
 }
 
+static int	create_size_t(t_prog *prog)
+{
+	prog->threads = malloc(sizeof(pthread_t) * prog->rules->nb_philo);
+	if (prog->threads)
+		return (1);
+	handle_error("Could not malloc threads");
+	return (0);
+}
+
 int	__init__(t_prog *prog, char **args, int	max_eat)
 {
 	int			c_time;
@@ -69,13 +84,13 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 	if (!philo)
 		handle_error("Error mallocing: philo");
 	__init__philo(philo, rules->nb_philo);
+	prog->philo = philo;
+	prog->rules = rules;
 	c_time = __init__time(prog);
 	if (!c_time)
 		handle_error("Error getting the time");
-	if (!c_time || !philo || !rules)
+	if (!c_time || !philo || !rules || !create_size_t(prog))
 		return (0);
-	prog->philo = philo;
-	prog->rules = rules;
 	return (1);
 }
 
