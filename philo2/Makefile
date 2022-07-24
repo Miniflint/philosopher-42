@@ -30,7 +30,7 @@ $(NAME): $(OBJS)
 	@printf "\n$(G)Done$(W)%50s\n" " "
 
 %.o: %.c
-	@printf "$(G)Generating minishell objects... $(C)%-33.33s$(W)\r" $@
+	@printf "$(G)Generating philo objects... $(C)%-33.33s$(W)\r" $@
 	@$(CC) -c $< -o $@
 
 clean:
