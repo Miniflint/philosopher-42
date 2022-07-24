@@ -33,6 +33,6 @@ void	free_mem(t_prog *prog);
 	/* errors */
 void	handle_error(char *str);
 	/* init */
-void	__init__(t_prog *prog, char **args, int	max_eat);
+int	__init__(t_prog *prog, char **args, int max_eat);
 
 #endif

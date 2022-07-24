@@ -7,6 +7,7 @@ W=\e[0;37m
 MSRC	= main.c
 USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c free_mem.c
 
+ODIR	= ./obj
 MDIR	= ./src/main
 UDIR	= ./src/utils
 
@@ -29,7 +30,7 @@ $(NAME): $(OBJS)
 	@echo "\n$(G)Done$(W)"
 
 %.o: %.c
-	@printf "$(G)Compiling philo objects.. $(C)$<$(W)                                \r"
+	@printf "$(G)Generating minishell objects... $(C)%-33.33s$(W)\r" $@
 	@$(CC) -c $< -o $@
 
 clean:
@@ -50,5 +51,10 @@ prune:
 	@docker system prune -a --volumes
 
 re: fclean all
+
+test: re
+	@echo "Launching philo with '3 4 5 6'\n"
+	@sleep 1
+	./philo 3 4 5 6
 
 .PHONY:	clean fclean all re build prune

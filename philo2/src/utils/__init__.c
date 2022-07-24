@@ -12,7 +12,16 @@
 
 #include "../../headers/philo.h"
 
-void	__init__philo(t_philo *philo, int amount_philo)
+static int	__init__time(t_prog *prog)
+{
+	int c_time;
+
+	c_time = gettimeofday(prog->value_time, NULL);
+	prog->time_start = prog->value_time->tv_usec * 1000;
+	return (c_time + 1);
+}
+
+static void	__init__philo(t_philo *philo, int amount_philo)
 {
 	int	i;
 
@@ -20,6 +29,7 @@ void	__init__philo(t_philo *philo, int amount_philo)
 	while (i < amount_philo)
 	{
 		philo[i].id = i;
+		philo[i].ate = 0;
 		pthread_mutex_init(&philo[i].fork_right_id, NULL);
 		i++;
 	}
@@ -44,8 +54,9 @@ static void	__init__rules(t_rules *rules, char **argv)
 		rules->nb_t_eat = ft_atoi(argv[5]);
 }
 
-void	__init__(t_prog *prog, char **args, int	max_eat)
+int	__init__(t_prog *prog, char **args, int	max_eat)
 {
+	int			c_time;
 	t_philo			*philo;
 	t_rules			*rules;
 
@@ -58,6 +69,13 @@ void	__init__(t_prog *prog, char **args, int	max_eat)
 	if (!philo)
 		handle_error("Error mallocing: philo");
 	__init__philo(philo, rules->nb_philo);
+	c_time = __init__time(prog);
+	if (!c_time)
+		handle_error("Error getting the time");
+	if (!c_time || !philo || !rules)
+		return (0);
 	prog->philo = philo;
 	prog->rules = rules;
+	return (1);
 }
+

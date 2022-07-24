@@ -17,5 +17,5 @@ void	handle_error(char *str)
 	W_ERROR;
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
-	exit(EXIT_FAILURE);
 }
+

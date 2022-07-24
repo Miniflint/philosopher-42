@@ -14,13 +14,19 @@
 
 int	main(int argc, char **argv)
 {
+	int	c_init;
 	t_prog	prog;
 
-	if (argc < 2 || argc > 6)
+	c_init = 1;
+	if (argc < 5 || argc > 6)
+	{
 		handle_error(ALL);
+		return (1);
+	}
 	if (argc == 6)
-		__init__(&prog, argv, ft_atoi(argv[5]));
+		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
-		__init__(&prog, argv, 0);
+		c_init = __init__(&prog, argv, 0);
 	free_mem(&prog);
+	return (c_init);
 }

@@ -21,6 +21,8 @@
 typedef struct S_philo
 {
 	int	id;
+	int	ate;
+	struct S_prog *backup;
 	pthread_mutex_t	fork_right_id;
 	pthread_mutex_t	*fork_left_id;
 }	t_philo;
@@ -38,6 +40,7 @@ typedef struct S_rule
 typedef struct S_prog
 {
 	long long		time_start;
+	struct timeval		*value_time;
 	t_rules			*rules;
 	t_philo			*philo;
 }	t_prog;
