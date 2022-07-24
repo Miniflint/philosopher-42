@@ -25,8 +25,8 @@ CC		= gcc $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "\n$(G)Done$(W)"
 	@$(CC) $(OBJS) -o $(NAME)
+	@echo "\n$(G)Done$(W)"
 
 %.o: %.c
 	@printf "$(G)Compiling philo objects.. $(C)$<$(W)                                \r"
