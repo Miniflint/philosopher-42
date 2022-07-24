@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"philostruct.h": "c",
-		"philo.h": "c",
-		"__locale": "c",
-		"unistd.h": "c",
-		"stdio.h": "c"
-	}
-}
