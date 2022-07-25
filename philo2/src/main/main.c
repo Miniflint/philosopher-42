@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/24 22:55:54 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/25 16:41:09 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	create_threads(t_prog *prog)
 	while (i < prog->rules->nb_philo)
 	{
 		if (pthread_create(&prog->threads[i], NULL, &routine, &philos[i]))
-			return (0);
+			return (1);
 		i++;
 	}
 	i = 0;
 	while (i < prog->rules->nb_philo)
 		if (pthread_join(prog->threads[i++], NULL))
-			return (0);
-	return (1);
+			return (1);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -47,12 +47,13 @@ int	main(int argc, char **argv)
 		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
 		c_init = __init__(&prog, argv, 0);
-	if (!create_threads(&prog))
+	if (create_threads(&prog))
 	{
 		handle_error("Error creating / joining threads");
+		free_mem(&prog);
 		return (1);
 	}
 	free_mem(&prog);
-	return (c_init);
+	return (0);
 }
 

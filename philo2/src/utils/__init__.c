@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/24 22:50:20 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/25 16:39:40 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 	i = 0;
 	while (i < amount_philo)
 	{
-		philo[i].id = i;
+		philo[i].id = i + 1;
 		philo[i].backup = prog;
 		philo[i].ate = 0;
 		pthread_mutex_init(&philo[i].fork_right_id, NULL);
@@ -73,8 +73,8 @@ static int	create_size_t(t_prog *prog)
 int	__init__(t_prog *prog, char **args, int	max_eat)
 {
 	int			c_time;
-	t_philo			*philo;
-	t_rules			*rules;
+	t_philo		*philo;
+	t_rules		*rules;
 
 	rules = malloc(sizeof(t_rules));
 	if (!rules)
@@ -91,7 +91,7 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 	if (!c_time)
 		handle_error("Error getting the time");
 	if (!c_time || !philo || !rules || !create_size_t(prog))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 

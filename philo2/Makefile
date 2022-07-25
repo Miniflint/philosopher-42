@@ -53,8 +53,13 @@ prune:
 re: fclean all
 
 test: re
-	@echo "Launching philo with '3 4 5 6'\n"
+	@printf "$(G)Launching test 1: 3 4 5 6\n$(W)"
+	@./philo 3 4 5 6
 	@sleep 1
-	./philo 3 4 5 6
+	@printf "$(G)Launching test 2: 5 7 9 0\n$(W)"
+	@./philo 5 7 9 0
+	@sleep 1
+	@printf "$(G)Launching test 3: 10 5 7 8\n$(W)"
+	@./philo 10 5 7 8
 
 .PHONY:	clean fclean all re build prune
