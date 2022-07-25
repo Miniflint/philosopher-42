@@ -27,7 +27,7 @@ static int	__init__time(t_prog *prog)
 	return (c_time + 1);
 }
 
-static void	__init__philo(t_philo *philo, int amount_philo)
+static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 {
 	int	i;
 
@@ -35,6 +35,7 @@ static void	__init__philo(t_philo *philo, int amount_philo)
 	while (i < amount_philo)
 	{
 		philo[i].id = i;
+		philo[i].backup = prog;
 		philo[i].ate = 0;
 		pthread_mutex_init(&philo[i].fork_right_id, NULL);
 		i++;
@@ -83,7 +84,7 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 	philo = malloc(sizeof(t_philo) * rules->nb_philo);
 	if (!philo)
 		handle_error("Error mallocing: philo");
-	__init__philo(philo, rules->nb_philo);
+	__init__philo(philo, rules->nb_philo, prog);
 	prog->philo = philo;
 	prog->rules = rules;
 	c_time = __init__time(prog);

@@ -17,12 +17,12 @@ int	create_threads(t_prog *prog)
 	int	i;
 	t_philo	*philos;
 
-	philo = prog->philo;
+	philos = prog->philo;
 	i = 0;
 	while (i < prog->rules->nb_philo)
 	{
 		if (pthread_create(&prog->threads[i], NULL, &routine, &philos[i]))
-			return (0)
+			return (0);
 		i++;
 	}
 	i = 0;
