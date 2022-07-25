@@ -24,6 +24,7 @@ static int	__init__time(t_prog *prog)
 	}
 	c_time = gettimeofday(prog->value_time, NULL);
 	prog->time_start = (long long)prog->value_time->tv_usec;
+	printf("Start program time: %lld\n", prog->time_start);
 	return (c_time + 1);
 }
 

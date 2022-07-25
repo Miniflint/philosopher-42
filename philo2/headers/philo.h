@@ -27,6 +27,8 @@
 /* main */
 void	*routine(void *var);
 int		eating(t_philo	*philo);
+int		thinking(t_philo *philo);
+int		timing(t_philo *philo);
 
 /* utils */
 int		ft_strlen(char *str);

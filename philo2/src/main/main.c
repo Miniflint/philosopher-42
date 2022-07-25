@@ -47,6 +47,8 @@ int	main(int argc, char **argv)
 		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
 		c_init = __init__(&prog, argv, 0);
+	if (c_init)
+		return (1);
 	if (create_threads(&prog))
 	{
 		handle_error("Error creating / joining threads");

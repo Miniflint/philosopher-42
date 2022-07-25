@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/*e************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philostruct.h                                      :+:      :+:    :+:   */
@@ -40,6 +40,7 @@ typedef struct S_rule
 typedef struct S_prog
 {
 	long long		time_start;
+	long long		time_now;
 	struct timeval	*value_time;
 	pthread_t		monitoring;
 	pthread_t		*threads;
