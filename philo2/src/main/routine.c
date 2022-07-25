@@ -8,8 +8,9 @@ void	*routine(void *var)
 	philo = (t_philo *)var;
 	prog = (t_prog *)philo->backup;
 	prog->rules->nb_t_eat = 12;
-	printf("entering: philo: %i\n", philo->id);
-	usleep(2000000);
-	printf("exiting: philo: %i\n", philo->id);
+	if (philo->id % 2 == 0)
+		eating(philo);
+	else
+		printf("philo %i\tis thinking\n", philo->id);
 	return (0);
 }

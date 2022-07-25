@@ -4,7 +4,7 @@ B=\e[0;34m
 C=\e[0;36m
 W=\e[0;37m
 
-MSRC	= main.c routine.c
+MSRC	= main.c routine.c e_f_t.c
 USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c free_mem.c
 
 ODIR	= ./obj

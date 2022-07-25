@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 16:40:05 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/07/25 16:54:03 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 /* main */
 void	*routine(void *var);
+int		eating(t_philo	*philo);
 
 /* utils */
 int		ft_strlen(char *str);
