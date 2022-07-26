@@ -53,8 +53,8 @@ prune:
 re: fclean all
 
 test: re
-	@printf "$(G)Launching test 1: 3 4 5 6\n$(W)"
-	@./philo 3 4 5 6
+	@printf "$(G)Launching test 1: 3 400 200 100\n$(W)"
+	@./philo 3 400 200 100
 	@sleep 1
 	@printf "$(G)Launching test 2: 5 7 9 0\n$(W)"
 	@./philo 5 7 9 0
