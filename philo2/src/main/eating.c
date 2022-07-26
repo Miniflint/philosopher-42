@@ -37,6 +37,7 @@ int	eating(t_philo *philo)
 {
 	if (taking_fork(philo))
 		return (1);
+	philo->ate += 1;
 	writing(philo, "Is eating");
 	usleep(philo->backup->rules->time_eat * 1000);
 	if (unlock_fork(philo))

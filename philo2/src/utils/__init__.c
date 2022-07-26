@@ -29,6 +29,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 	int	i;
 
 	i = 0;
+	prog->writing = malloc(sizeof(pthread_mutex_t));
 	while (i < amount_philo)
 	{
 		philo[i].id = i + 1;
