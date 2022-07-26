@@ -8,14 +8,24 @@ void	*routine(void *var)
 
 	philo = (t_philo *)var;
 	prog = (t_prog *)philo->backup;
-	prog->rules->nb_t_eat = 12;
-	i = prog->rules->nb_t_eat;
-	while (i)
+	i = 0;
+	while (!prog->rules->died)
 	{
-		if (philo->id % 2 == 0)	
+		if (philo->id % 2 == 0)
+		{	
 			eating(philo);
-		thinking(philo);
-		i--;
+			sleeping(philo);
+			thinking(philo);
+		}
+		else
+		{
+			if (!i)
+				usleep(250);
+			thinking(philo);
+			eating(philo);
+			sleeping(philo);
+		}
+		i++;
 	}
 	return (0);
 }

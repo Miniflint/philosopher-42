@@ -14,18 +14,14 @@
 
 static int	__init__time(t_prog *prog)
 {
-	int c_time;
-
 	prog->value_time = malloc(sizeof(struct timeval));
 	if (!prog->value_time)
 	{
 		handle_error("Error mallocing timeval");
-		return (0);
+		return (1);
 	}
-	c_time = gettimeofday(prog->value_time, NULL);
-	prog->time_start = (long long)prog->value_time->tv_usec;
-	printf("Start program time: %lld\n", prog->time_start);
-	return (c_time + 1);
+	prog->time_start = time_s();
+	return (0);
 }
 
 static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
@@ -50,10 +46,12 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 			philo[i].fork_left_id = &philo[i + 1].fork_right_id;
 		i++;
 	}
+	pthread_mutex_init(prog->writing, NULL);
 }
 
 static void	__init__rules(t_rules *rules, char **argv)
 {
+	rules->died = 0;
 	rules->nb_philo = ft_atoi(argv[1]);
 	rules->time_die = ft_atoi(argv[2]);
 	rules->time_eat = ft_atoi(argv[3]);
@@ -89,9 +87,9 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 	prog->philo = philo;
 	prog->rules = rules;
 	c_time = __init__time(prog);
-	if (!c_time)
+	if (c_time)
 		handle_error("Error getting the time");
-	if (!c_time || !philo || !rules || !create_size_t(prog))
+	if (c_time || !philo || !rules || !create_size_t(prog))
 		return (1);
 	return (0);
 }

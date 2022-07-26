@@ -29,6 +29,7 @@ typedef struct S_philo
 
 typedef struct S_rule
 {
+	int	died;
 	int	nb_philo;
 	int	time_die;
 	int	time_eat;
@@ -42,7 +43,7 @@ typedef struct S_prog
 	long long		time_start;
 	long long		time_now;
 	struct timeval	*value_time;
-	pthread_t		monitoring;
+	pthread_mutex_t		*writing;
 	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;

@@ -1,21 +1,20 @@
 #include "../../headers/philo.h"
 
-int	actualize_time(t_prog *prog)
+long long	time_s(void)
 {
-	int	c_check;
+	int		i;
+	struct timeval	t;
 
-	c_check = gettimeofday(prog->value_time, NULL);
-	if (c_check)
-		return (1);
-	return (prog->value_time->tv_usec - prog->time_start);
+	i = gettimeofday(&t, NULL);
+	if (i)
+		return (-1);
+	return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }
 
-
-int	timing(t_philo *philo)
+int	actualize_time(t_prog *prog)
 {
-	t_prog	*prog;
-
-	prog = philo->backup;
-	prog->time_now = actualize_time(prog);
+	prog->time_now = time_s();
+	if (prog->time_now == -1)
+		return (1);
 	return (0);
 }

@@ -14,13 +14,13 @@
 
 int	taking_fork(t_philo *philo)
 {
-	timing(philo);
-	printf("philo %i\tHas taken a fork\n", philo->id);
+	actualize_time(philo->backup);
 	if (pthread_mutex_lock(&philo->fork_right_id))
 		return (1);
-	printf("philo %i\tHas taken a fork\n", philo->id);
+	writing(philo, "Has taken a fork");
 	if (pthread_mutex_lock(philo->fork_left_id))
 		return (1);
+	writing(philo, "Has taken a fork");
 	return (0);
 }
 
@@ -37,7 +37,7 @@ int	eating(t_philo *philo)
 {
 	if (taking_fork(philo))
 		return (1);
-	printf("philo %i\tIs eating\n", philo->id);
+	writing(philo, "Is eating");
 	usleep(philo->backup->rules->time_eat * 1000);
 	if (unlock_fork(philo))
 		return (1);
