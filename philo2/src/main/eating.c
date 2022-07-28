@@ -52,9 +52,9 @@ int	eating(t_philo *philo)
 	if (writing(philo, "Is eating"))
 		return (1);
 	philo->ate += 1;
+	philo->last_meal = (time_s() - prog->time_start);
 	ft_usleep(philo->backup->rules->time_eat);
 	// printf("time now: %lli - last_meal: %lli\n", (time_s() - prog->time_start), philo->last_meal);
-	philo->last_meal = (time_s() - prog->time_start);
 	if (unlock_fork(philo))
 		return (1);
 	return (0);
