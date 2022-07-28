@@ -2,6 +2,12 @@
 
 int	thinking(t_philo *philo)
 {
-	writing(philo, "Is thinking");
+	t_prog	*prog;
+
+	prog = philo->backup;
+	if (prog->rules->died)
+		return (1);
+	if (writing(philo, "Is thinking"))
+		return (1);
 	return (0);
 }

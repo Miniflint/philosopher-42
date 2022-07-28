@@ -16,19 +16,27 @@ void	*routine(void *var)
 				break ;
 		if (philo->id % 2 == 0)
 		{	
-			eating(philo);
-			sleeping(philo);
-			thinking(philo);
+			if (eating(philo))
+				return ((void *)1);
+			if (sleeping(philo))
+				return ((void *)1);
+			if (thinking(philo))
+				return ((void *)1);
 		}
 		else
 		{
 			if (!i)
-				usleep(500);
-			thinking(philo);
-			eating(philo);
-			sleeping(philo);
+				ft_usleep(100);
+			if (thinking(philo))
+				return ((void *)1);
+			if (eating(philo))
+				return ((void *)1);
+			if (sleeping(philo))
+				return ((void *)1);
 		}
 		i++;
 	}
+	if (prog->rules->died)
+		return ((void *)1);
 	return (0);
 }

@@ -33,11 +33,13 @@ long long	time_s(void);
 int		sleeping(t_philo *philo);
 int		actualize_time(t_prog *prog);
 int		writing(t_philo *philo, char *str);
+
 /* utils */
 int		ft_strlen(char *str);
 char	*ft_strdup(char *str);
 int		ft_atoi(char *str);
 void	free_mem(t_prog *prog);
+void    ft_usleep(long time_to_wait);
 
 	/* errors */
 void	handle_error(char *str);

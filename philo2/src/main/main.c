@@ -16,7 +16,9 @@ int	create_threads(t_prog *prog)
 {
 	int	i;
 	t_philo	*philos;
+	void	*rtn_val;
 
+	rtn_val = NULL;
 	philos = prog->philo;
 	i = 0;
 	while (i < prog->rules->nb_philo)
@@ -25,10 +27,13 @@ int	create_threads(t_prog *prog)
 			return (1);
 		i++;
 	}
+	printf("I am here\n");
 	i = 0;
 	while (i < prog->rules->nb_philo)
-		if (pthread_join(prog->threads[i++], NULL))
+		if (pthread_join(prog->threads[i++], &rtn_val))
 			return (1);
+	if (rtn_val)
+		printf("===========================================");
 	return (0);
 }
 

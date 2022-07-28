@@ -13,16 +13,17 @@
 #ifndef PHILOSTRUCT_H
 # define PHILOSTRUCT_H
 
-#include "philo.h"
+# include "philo.h"
 
 # define E_BASE "./philo [error]: "
 # define W_ERROR write(2, E_BASE, ft_strlen(E_BASE))
 
 typedef struct S_philo
 {
-	int	id;
-	int	ate;
-	struct S_prog *backup;
+	int		id;
+	int		ate;
+	long long	last_meal;
+	struct S_prog	*backup;
 	pthread_mutex_t	fork_right_id;
 	pthread_mutex_t	*fork_left_id;
 }	t_philo;
@@ -42,7 +43,7 @@ typedef struct S_prog
 {
 	long long		time_start;
 	long long		time_now;
-	struct timeval	*value_time;
+	struct timeval		*value_time;
 	pthread_mutex_t		*writing;
 	pthread_t		*threads;
 	t_rules			*rules;

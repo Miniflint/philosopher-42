@@ -35,6 +35,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 		philo[i].id = i + 1;
 		philo[i].backup = prog;
 		philo[i].ate = 0;
+		philo[i].last_meal = 0;
 		pthread_mutex_init(&philo[i].fork_right_id, NULL);
 		i++;
 	}
@@ -55,10 +56,12 @@ static void	__init__rules(t_rules *rules, char **argv)
 	rules->died = 0;
 	rules->nb_philo = ft_atoi(argv[1]);
 	rules->time_die = ft_atoi(argv[2]);
-	rules->time_eat = ft_atoi(argv[3]);
-	rules->time_sleep = ft_atoi(argv[4]);
+	rules->time_eat = ft_atoi(argv[3]) * 1000;
+	rules->time_sleep = ft_atoi(argv[4]) * 1000;
 	if (rules->add_max_eat)
 		rules->nb_t_eat = ft_atoi(argv[5]);
+	else
+		rules->nb_t_eat = 0;
 }
 
 static int	create_size_t(t_prog *prog)
@@ -79,6 +82,7 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 	rules = malloc(sizeof(t_rules));
 	if (!rules)
 		handle_error("Error mallocing: rules");
+	printf("max_eat: %i\n", rules->add_max_eat);
 	rules->add_max_eat = max_eat;
 	__init__rules(rules, args);
 	philo = malloc(sizeof(t_philo) * rules->nb_philo);

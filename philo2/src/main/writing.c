@@ -4,10 +4,11 @@ int	writing(t_philo *philo, char *str)
 {
 	t_prog		*prog;
 
+	pthread_mutex_lock(philo->backup->writing);
 	prog = philo->backup;
-	actualize_time(prog);
-	pthread_mutex_lock(prog->writing);
-	printf("%lli\tphilo_%i\t%s\n", time_s() - prog->time_start, philo->id, str);
-	pthread_mutex_unlock(prog->writing);
+	if (prog->rules->died)
+		return (1);
+	printf("%lli \tphilo_%i\t %s\n", time_s() - prog->time_start, philo->id, str);
+	pthread_mutex_unlock(philo->backup->writing);
 	return (0);
 }

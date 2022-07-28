@@ -21,8 +21,7 @@ ifeq ($(DEBUG), debug)
 	CFLAGS += -fsanitize=address -g3
 endif
 NAME	= philo
-CC		= gcc $(CFLAGS)
-
+CC	= gcc $(CFLAGS)
 all: $(NAME)
 
 $(NAME): $(OBJS)
