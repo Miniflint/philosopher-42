@@ -35,26 +35,26 @@ int	unlock_fork(t_philo *philo)
 	return (0);
 }
 
-// last meal = temp mtn - dernier repas pour avoir la diff
-
 int	eating(t_philo *philo)
 {
 	t_prog *prog;
 
+	prog = philo->backup;
+	printf("last meal: %lli - time_now: %lli\n", philo->last_meal + prog->rules->time_die, (time_s() - prog->time_start));
+	if (philo->last_meal + prog->rules->time_die < (time_s() - prog->time_start))
+	{
+		writing(philo, "Is dead");
+		prog->rules->died = 1;
+		return (1);
+	}
 	if (taking_fork(philo))
 		return (1);
-	prog = philo->backup;
-//	if (philo->last_meal > prog->rules->time_die)
-//	{
-//		writing(philo, "Is dead");
-//		prog->rules->died = 1;
-//		return (1);
-//	}
 	if (writing(philo, "Is eating"))
 		return (1);
 	philo->ate += 1;
 	ft_usleep(philo->backup->rules->time_eat);
-	philo->last_meal = (time_s() - prog->time_start) - philo->last_meal;
+	// printf("time now: %lli - last_meal: %lli\n", (time_s() - prog->time_start), philo->last_meal);
+	philo->last_meal = (time_s() - prog->time_start);
 	if (unlock_fork(philo))
 		return (1);
 	return (0);
