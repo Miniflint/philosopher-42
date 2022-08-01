@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 19:44:34 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:45:02 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int			thinking(t_philo *philo);
 int			timing(t_philo *philo);
 long long	time_s(void);
 int			sleeping(t_philo *philo);
-int			actualize_time(t_prog *prog);
 int			writing(t_philo *philo, char *str);
 
 /* utils */

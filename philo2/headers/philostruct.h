@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 19:50:56 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:59:40 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct S_prog
 	long long		time_start;
 	long long		time_now;
 	struct timeval	*value_time;
-	pthread_mutex_t	*writing;
+	pthread_mutex_t	writing;
 	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;

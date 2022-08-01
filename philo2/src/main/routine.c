@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 20:01:14 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:50:53 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	*routine(void *var)
 		if (prog->rules->nb_t_eat)
 			if (philo->ate >= prog->rules->nb_t_eat)
 				break ;
+		if (prog->rules->died)
+			return ((void *)1);
 		if (while_if_loop(philo, i))
 			return ((void *)1);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 20:13:51 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 21:00:12 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 	int	i;
 
 	i = 0;
-	prog->writing = malloc(sizeof(pthread_mutex_t));
 	while (i < amount_philo)
 	{
 		philo[i].id = i + 1;
@@ -48,7 +47,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 			philo[i].fork_left_id = &philo[i + 1].fork_right_id;
 		i++;
 	}
-	pthread_mutex_init(prog->writing, NULL);
+	pthread_mutex_init(&prog->writing, NULL);
 }
 
 static void	__init__rules(t_rules *rules, char **argv)
