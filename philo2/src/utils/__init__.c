@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 20:02:53 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:13:51 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	__init__(t_prog *prog, char **args, int max_eat)
 	rules = malloc(sizeof(t_rules));
 	if (!rules)
 		handle_error("Error mallocing: rules");
-	printf("max_eat: %i\n", rules->add_max_eat);
 	rules->add_max_eat = max_eat;
 	__init__rules(rules, args);
 	philo = malloc(sizeof(t_philo) * rules->nb_philo);

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 19:56:05 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:17:03 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ int	create_threads(t_prog *prog)
 			return (1);
 		i++;
 	}
-	printf("I am here\n");
 	i = 0;
 	while (i < prog->rules->nb_philo)
 		if (pthread_join(prog->threads[i++], &rtn_val))
 			return (1);
 	if (rtn_val)
-		printf("===========================================");
+		printf("===========================================\n");
 	return (0);
 }
 
