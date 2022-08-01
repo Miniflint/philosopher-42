@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_f_t.c                                            :+:      :+:    :+:   */
+/*   eating.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:44:05 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 17:06:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 19:55:08 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	unlock_fork(t_philo *philo)
 
 int	eating(t_philo *philo)
 {
-	t_prog *prog;
+	t_prog	*prog;
 
 	prog = philo->backup;
-	printf("last meal: %lli - time_now: %lli\n", philo->last_meal + prog->rules->time_die, (time_s() - prog->time_start));
-	if (philo->last_meal + prog->rules->time_die < (time_s() - prog->time_start))
+	if (philo->last_meal + prog->rules->time_die
+		< (time_s() - prog->time_start))
 	{
 		writing(philo, "Is dead");
 		prog->rules->died = 1;
@@ -54,9 +54,7 @@ int	eating(t_philo *philo)
 	philo->ate += 1;
 	philo->last_meal = (time_s() - prog->time_start);
 	ft_usleep(philo->backup->rules->time_eat);
-	// printf("time now: %lli - last_meal: %lli\n", (time_s() - prog->time_start), philo->last_meal);
 	if (unlock_fork(philo))
 		return (1);
 	return (0);
 }
-

@@ -1,4 +1,4 @@
-/*e************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   philostruct.h                                      :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 16:42:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 19:50:56 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 # include "philo.h"
 
 # define E_BASE "./philo [error]: "
-# define W_ERROR write(2, E_BASE, ft_strlen(E_BASE))
 
 typedef struct S_philo
 {
-	int		id;
-	int		ate;
-	long long	last_meal;
+	int				id;
+	int				ate;
+	long long		last_meal;
 	struct S_prog	*backup;
 	pthread_mutex_t	fork_right_id;
 	pthread_mutex_t	*fork_left_id;
@@ -43,8 +42,8 @@ typedef struct S_prog
 {
 	long long		time_start;
 	long long		time_now;
-	struct timeval		*value_time;
-	pthread_mutex_t		*writing;
+	struct timeval	*value_time;
+	pthread_mutex_t	*writing;
 	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;

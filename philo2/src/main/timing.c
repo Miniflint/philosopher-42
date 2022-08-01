@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   timing.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/01 20:02:04 by tgoel             #+#    #+#             */
+/*   Updated: 2022/08/01 20:02:15 by tgoel            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/philo.h"
 
 int	get_diff(struct timeval *start)
@@ -23,7 +35,7 @@ void	ft_usleep(long time_to_wait)
 
 long long	time_s(void)
 {
-	int		i;
+	int				i;
 	struct timeval	t;
 
 	i = gettimeofday(&t, NULL);

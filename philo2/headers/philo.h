@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 16:54:03 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 19:44:34 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@
 # include "philostruct.h"
 
 /* main */
-void	*routine(void *var);
-int		eating(t_philo	*philo);
-int		thinking(t_philo *philo);
-int		timing(t_philo *philo);
+void		*routine(void *var);
+int			eating(t_philo *philo);
+int			thinking(t_philo *philo);
+int			timing(t_philo *philo);
 long long	time_s(void);
-int		sleeping(t_philo *philo);
-int		actualize_time(t_prog *prog);
-int		writing(t_philo *philo, char *str);
+int			sleeping(t_philo *philo);
+int			actualize_time(t_prog *prog);
+int			writing(t_philo *philo, char *str);
 
 /* utils */
-int		ft_strlen(char *str);
-char	*ft_strdup(char *str);
-int		ft_atoi(char *str);
-void	free_mem(t_prog *prog);
-void    ft_usleep(long time_to_wait);
+int			ft_strlen(char *str);
+char		*ft_strdup(char *str);
+int			ft_atoi(char *str);
+void		free_mem(t_prog *prog);
+void		ft_usleep(long time_to_wait);
 
 	/* errors */
-void	handle_error(char *str);
+void		handle_error(char *str);
 	/* init */
-int	__init__(t_prog *prog, char **args, int max_eat);
+int			__init__(t_prog *prog, char **args, int max_eat);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 16:41:09 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 19:56:05 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	create_threads(t_prog *prog)
 {
-	int	i;
+	int		i;
 	t_philo	*philos;
 	void	*rtn_val;
 
@@ -37,6 +37,18 @@ int	create_threads(t_prog *prog)
 	return (0);
 }
 
+static void	error_arg(void)
+{
+	write(2, "./philo [error]", ft_strlen("./philo [error]"));
+	write(2, FRST, ft_strlen(FRST));
+	write(2, SCND, ft_strlen(SCND));
+	write(2, THRD, ft_strlen(THRD));
+	write(2, FRTH, ft_strlen(FRTH));
+	write(2, FFTH, ft_strlen(FFTH));
+	write(2, SX, ft_strlen(SX));
+	write(2, "\n", 1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		c_init;
@@ -45,7 +57,7 @@ int	main(int argc, char **argv)
 	c_init = 1;
 	if (argc < 5 || argc > 6)
 	{
-		handle_error(ALL);
+		error_arg();
 		return (1);
 	}
 	if (argc == 6)
@@ -63,4 +75,3 @@ int	main(int argc, char **argv)
 	free_mem(&prog);
 	return (0);
 }
-

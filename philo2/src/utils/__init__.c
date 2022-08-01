@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/07/25 16:39:40 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/01 20:02:53 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	create_size_t(t_prog *prog)
 	return (0);
 }
 
-int	__init__(t_prog *prog, char **args, int	max_eat)
+int	__init__(t_prog *prog, char **args, int max_eat)
 {
 	int			c_time;
 	t_philo		*philo;
@@ -98,4 +98,3 @@ int	__init__(t_prog *prog, char **args, int	max_eat)
 		return (1);
 	return (0);
 }
-
