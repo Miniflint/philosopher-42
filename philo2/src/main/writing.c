@@ -22,16 +22,13 @@ int	writing(t_philo *philo, char *str)
 	if (philo->backup->rules->died)
 		return (1);
 	prog = philo->backup;
+	//printf("\n");
 	if (philo->id >= 10 && !prog->rules->died)
 		printf("%lli \tphilo_%i %s\n",
 			time_s() - prog->time_start, philo->id, str);
 	else if (philo->id < 10 && !prog->rules->died)
 		printf("%lli \tphilo_%i\t %s\n",
 			time_s() - prog->time_start, philo->id, str);
-	if (prog->rules->died)
-		return (1);
 	pthread_mutex_unlock(&prog->writing);
-	if (prog->rules->died)
-		return (1);
 	return (0);
 }

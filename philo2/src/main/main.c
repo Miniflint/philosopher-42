@@ -12,6 +12,19 @@
 
 #include "../../headers/philo.h"
 
+static int del_threads(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	while (i < prog->rules->nb_philo)
+	{
+		pthread_detach(prog->threads[i]);
+		i++;
+	}
+	return (0);
+}
+
 int	create_threads(t_prog *prog)
 {
 	int		i;
@@ -31,6 +44,7 @@ int	create_threads(t_prog *prog)
 	while (i < prog->rules->nb_philo)
 		if (pthread_join(prog->threads[i++], &rtn_val))
 		{
+			del_threads(prog);
 			printf("===========================================\n");
 			return (0);
 		}
