@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 21:00:12 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 07:47:56 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 	i = 0;
 	while (i < amount_philo)
 	{
-		philo[i].id = i + 1;
+		philo[i].id = i;
 		philo[i].backup = prog;
 		philo[i].ate = 0;
 		philo[i].last_meal = 0;

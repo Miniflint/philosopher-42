@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 22:41:09 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 07:59:17 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	create_threads(t_prog *prog)
 {
 	int		i;
 	t_philo	*philos;
-	void	*rtn_val;
-
-	rtn_val = NULL;
+	
 	philos = prog->philo;
 	i = 0;
 	while (i < prog->rules->nb_philo)
@@ -42,14 +40,10 @@ int	create_threads(t_prog *prog)
 	}
 	i = 0;
 	while (i < prog->rules->nb_philo)
-		if (pthread_join(prog->threads[i++], &rtn_val))
-		{
-			del_threads(prog);
-			printf("===========================================\n");
-			return (0);
-		}
-	if (rtn_val)
-		return (1);
+		if (pthread_join(prog->threads[i++], NULL))
+			return (1);
+	del_threads(prog);
+	printf("===========================================\n");
 	return (0);
 }
 

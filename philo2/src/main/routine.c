@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 04:49:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 08:00:00 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	detach_threads(t_philo *philo, t_prog *prog)
 	int	id;
 
 	id = philo->id;
-	if (pthread_detach(prog->threads[id]))
-		return (1);
+	printf("Ici\n");
+	if (prog->threads[id])
+		if (pthread_detach(prog->threads[id]))
+			return (1);
 	return (0);
 }
 
@@ -66,9 +68,6 @@ void	*routine(void *var)
 		i++;
 	}
 	if (prog->rules->died)
-	{
-		detach_threads(philo, prog);
 		return ((void *)1);
-	}
 	return (0);
 }
