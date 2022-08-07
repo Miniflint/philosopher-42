@@ -6,13 +6,13 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 07:59:17 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 08:17:12 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
-static int del_threads(t_prog *prog)
+static int	del_threads(t_prog *prog)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	create_threads(t_prog *prog)
 {
 	int		i;
 	t_philo	*philos;
-	
+
 	philos = prog->philo;
 	i = 0;
 	while (i < prog->rules->nb_philo)

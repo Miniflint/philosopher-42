@@ -6,25 +6,13 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 08:00:00 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 08:19:08 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
-int	detach_threads(t_philo *philo, t_prog *prog)
-{
-	int	id;
-
-	id = philo->id;
-	printf("Ici\n");
-	if (prog->threads[id])
-		if (pthread_detach(prog->threads[id]))
-			return (1);
-	return (0);
-}
-
-static int	while_if_loop(t_philo *philo, int i)
+static int	while_if_loop(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 	{	
@@ -37,8 +25,6 @@ static int	while_if_loop(t_philo *philo, int i)
 	}
 	else
 	{
-		if (!i)
-			ft_usleep(15000);
 		if (sleeping(philo))
 			return (1);
 		if (thinking(philo))
@@ -63,7 +49,7 @@ void	*routine(void *var)
 		if (prog->rules->nb_t_eat)
 			if (philo->ate >= prog->rules->nb_t_eat)
 				break ;
-		if (while_if_loop(philo, i))
+		if (while_if_loop(philo))
 			break ;
 		i++;
 	}
