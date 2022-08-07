@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 22:38:28 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 04:49:10 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static int	while_if_loop(t_philo *philo, int i)
 	else
 	{
 		if (!i)
-			ft_usleep(100);
+			ft_usleep(15000);
+		if (sleeping(philo))
+			return (1);
 		if (thinking(philo))
 			return (1);
 		if (eating(philo))
-			return (1);
-		if (sleeping(philo))
 			return (1);
 	}
 	return (0);
@@ -61,11 +61,7 @@ void	*routine(void *var)
 		if (prog->rules->nb_t_eat)
 			if (philo->ate >= prog->rules->nb_t_eat)
 				break ;
-		if (prog->rules->died)
-			break ;
 		if (while_if_loop(philo, i))
-			break ;
-		if (prog->rules->died)
 			break ;
 		i++;
 	}
