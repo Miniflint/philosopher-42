@@ -6,13 +6,13 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 08:19:08 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/07 08:23:55 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
 
-static int	while_if_loop(t_philo *philo)
+int	while_if_loop(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
 	{	
