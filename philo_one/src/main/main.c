@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/18 18:18:38 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/18 20:00:15 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ static void	error_arg(void)
 	write(2, "\n", 1);
 }
 
+void	one_philo()
+{
+	printf("1\tphilo_1\t%s\n", P_FORKS);
+	printf("1\tphilo_1\tIs dead\n");
+	printf("=======================================\n");
+}
+
 int	main(int argc, char **argv)
 {
 	int		c_init;
@@ -76,7 +83,9 @@ int	main(int argc, char **argv)
 		c_init = __init__(&prog, argv, 0);
 	if (c_init)
 		return (1);
-	if (create_threads(&prog))
+	if (prog.rules->nb_philo == 1)
+		one_philo();
+	else if (create_threads(&prog))
 	{
 		handle_error("Error creating / joining threads");
 		free_mem(&prog);
