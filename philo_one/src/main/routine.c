@@ -6,34 +6,11 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 08:23:55 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/08/18 18:56:39 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/philo.h"
-
-int	while_if_loop(t_philo *philo)
-{
-	if (philo->id % 2 == 0)
-	{	
-		if (eating(philo))
-			return (1);
-		if (sleeping(philo))
-			return (1);
-		if (thinking(philo))
-			return (1);
-	}
-	else
-	{
-		if (sleeping(philo))
-			return (1);
-		if (thinking(philo))
-			return (1);
-		if (eating(philo))
-			return (1);
-	}
-	return (0);
-}
 
 void	*routine(void *var)
 {
@@ -44,16 +21,18 @@ void	*routine(void *var)
 	philo = (t_philo *)var;
 	prog = (t_prog *)philo->backup;
 	i = 0;
+	if (philo->id % 2 == 0)
+		ft_usleep(1500);
 	while (!prog->rules->died)
 	{
+		eating(philo);
 		if (prog->rules->nb_t_eat)
 			if (philo->ate >= prog->rules->nb_t_eat)
 				break ;
-		if (while_if_loop(philo))
-			break ;
+		writing(philo, "Is sleeping");
+		ft_usleep(prog->rules->time_sleep);
+		writing(philo, "Is thinking");
 		i++;
 	}
-	if (prog->rules->died)
-		return ((void *)1);
 	return (0);
 }
