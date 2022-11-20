@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:01:36 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/07 08:19:20 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 15:36:14 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	sleeping(t_philo *philo)
 	t_prog	*prog;
 
 	prog = philo->backup;
+	if (check_is_dead(philo))
+		return (1);
 	if (prog->rules->died)
 		return (1);
 	if (philo->ate == prog->rules->nb_t_eat)
