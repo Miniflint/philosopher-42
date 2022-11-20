@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 16:47:53 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 16:55:17 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char		*ft_strdup(char *str);
 int			ft_atoi(char *str);
 void		free_mem(t_prog *prog);
 void		ft_usleep(long time_to_wait);
-int			check_is_dead(t_philo *philo);
 int			check_all_deaths(t_prog *prog);
 
 	/* errors */
