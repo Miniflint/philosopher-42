@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:44:05 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/18 18:54:42 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 14:40:21 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,8 @@ int	eating(t_philo *philo)
 	t_prog	*prog;
 
 	prog = philo->backup;
-	if (philo->last_meal + prog->rules->time_die
-		< (time_s() - prog->time_start))
-	{
-		if (writing(philo, "Is dead"))
-			return (1);
-		prog->rules->died = 1;
+	if (check_is_dead(philo))
 		return (1);
-	}
 	if (taking_fork(philo))
 		return (1);
 	if (writing(philo, P_EAT))
