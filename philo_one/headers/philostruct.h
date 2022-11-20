@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/18 19:54:36 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 17:34:23 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct S_philo
 {
 	int				id;
 	int				ate;
+	int				done_eating;
 	long long		last_meal;
 	struct S_prog	*backup;
 	pthread_mutex_t	fork_right_id;
@@ -42,8 +43,10 @@ typedef struct S_prog
 {
 	long long		time_start;
 	long long		time_now;
+	int				all_ate;
 	struct timeval	*value_time;
 	pthread_mutex_t	writing;
+	pthread_mutex_t	meal_check;
 	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;

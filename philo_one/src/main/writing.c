@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:02:23 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 15:36:08 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 18:12:54 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	writing(t_philo *philo, char *str)
 {
 	t_prog		*prog;
 
-	if (philo->backup->rules->died)
-		return (1);
 	pthread_mutex_lock(&philo->backup->writing);
 	prog = philo->backup;
 	if (philo->id >= 9 && !prog->rules->died)

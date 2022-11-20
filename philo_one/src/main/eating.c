@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:44:05 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 16:56:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 18:30:17 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	eating(t_philo *philo)
 	t_prog			*prog;
 
 	prog = philo->backup;
+	if (philo->done_eating)
+		return (0);
 	if (taking_fork(philo))
 		return (1);
 	philo->ate = philo->ate + 1;
@@ -44,7 +46,10 @@ int	eating(t_philo *philo)
 	if (writing(philo, P_EAT))
 		if (unlock_fork(philo))
 			return (1);
+	if (prog->rules->add_max_eat && philo->ate >= prog->rules->nb_t_eat)
+		philo->done_eating = 1;
 	if (prog->rules->died)
 		return (1);
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 16:52:46 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 17:36:01 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	__init__philo(t_philo *philo, int amount_philo, t_prog *prog)
 		philo[i].backup = prog;
 		philo[i].ate = 0;
 		philo[i].last_meal = 0;
+		philo[i].done_eating = 0;
 		pthread_mutex_init(&philo[i].fork_right_id, NULL);
 		i++;
 	}
@@ -89,10 +90,12 @@ int	__init__(t_prog *prog, char **args, int max_eat)
 	__init__philo(philo, rules->nb_philo, prog);
 	prog->philo = philo;
 	prog->rules = rules;
+	prog->all_ate = 0;
 	c_time = __init__time(prog);
 	if (c_time)
 		handle_error("Error getting the time");
 	if (c_time || !philo || !rules || !create_size_t(prog))
 		return (1);
+	pthread_mutex_init(&prog->meal_check, NULL);
 	return (0);
 }
