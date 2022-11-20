@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:56:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/18 18:56:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/20 15:17:23 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ void	*routine(void *var)
 		if (prog->rules->nb_t_eat)
 			if (philo->ate >= prog->rules->nb_t_eat)
 				break ;
-		writing(philo, "Is sleeping");
-		ft_usleep(prog->rules->time_sleep);
-		writing(philo, "Is thinking");
+		sleeping(philo);
+		thinking(philo);
 		i++;
 	}
 	return (0);
