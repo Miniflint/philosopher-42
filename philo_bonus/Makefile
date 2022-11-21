@@ -1,12 +1,13 @@
 SRCD	= ./src
-
+UTILD	= $(SRCD)/utils
 
 SRCF	= main.c
+UTILF	= ft_atoi.c init.c ft_get_t.c
 
+SRCO	= $(addprefix $(SRCD)/, $(SRCF))
+UTILO	= $(addprefix $(UTILD)/, $(UTILF))
 
-SRCO	= $(addprefix $(SRDC)/,$(SRCF))
-
-FILES	= $(SRCO)
+FILES	= $(SRCO) $(UTILO)
 OBJS	= $(FILES:.c=.o)
 
 CFLAGS	= -Werror -Wextra -Wall -pthread
@@ -20,7 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME)
-	@prinf "\nDone\n"
+	@printf "\nDone\n"
 
 %.o: %.c
 	@printf "Generating philo objects... %-33.33s\r" $@

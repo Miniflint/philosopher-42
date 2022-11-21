@@ -10,14 +10,14 @@ typedef struct S_philo
 	long long	last_meal;
 	sem_t		fork_right;
 	sem_t		*fork_left;
-	struct S_prog	*prog;
 }	t_philo;
 
 typedef struct S_rules
 {
 	int	nb_philo;
-	int	time_eat;
 	int	time_death;
+	int	time_eat;
+	int	time_sleep;
 	int	nb_eat;
 	int	died;
 	int	add_max_eat;
