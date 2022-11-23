@@ -29,10 +29,11 @@ typedef struct S_prog
 	long long	first_time;
 	t_rules		rules;
 	t_philo		*philo;
-	sem_t		*writing;
+	pthread_t	death_check;
+	sem_t		*write;
 	sem_t		*forks;
 	sem_t		*stop;
-	sem_t		*death
+	sem_t		*death;
 }	t_prog;
 
 

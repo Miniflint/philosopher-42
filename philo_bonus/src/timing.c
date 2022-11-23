@@ -1,4 +1,7 @@
-int	get_diff(struct timeval *start)
+
+#include "../inc/philo.h"
+
+static int	get_diff(struct timeval *start)
 {
 	struct timeval	now;
 	double			sec;

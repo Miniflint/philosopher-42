@@ -15,9 +15,28 @@
 
 # include "philostruct.h"
 
+// UTILS
 int     ft_atoi(char *str); 
-int     __init__(t_prog *prog, char **argv, int max_eat);
 t_prog  *ft_get_prog(t_prog *new_prog);
-void	ft_print_message(int id, t_philo *philo);
+int     __init__sema(t_prog *prog);
+
+// MAIN
+int     __init__(t_prog *prog, char **argv, int max_eat);
+void	writing(t_philo *philo, char *str);
+
+// DESTROY
+void	destroy_all(t_prog *prog);
+void    print_id(t_prog *prog);
+
+// TIMING
+long long	time_s(void);
+void	ft_usleep(long time_to_wait);
+
+// ACTION
+void	taking_fork(t_philo *philo);
+void    unlock_fork(t_prog *prog);
+void	eating(t_philo *philo);
+void	sleeping(t_philo *philo);
+void    thinking(t_philo *philo);
 
 #endif
