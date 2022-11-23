@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:20 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 22:01:51 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:51:52 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	create_proc(t_prog *prog)
 	int	i;
 
 	i = 0;
+	pthread_create(&(prog->meal_check), NULL, &check_all_done, prog);
+	pthread_detach(prog->meal_check);
 	while (i < prog->rules.nb_philo)
 	{
 		prog->philo[i].pid = fork();

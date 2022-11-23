@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:15:54 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:40:15 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:54:38 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ void	eating(t_philo *philo)
 
 	prog = ft_get_prog(NULL);
 	taking_fork(philo);
-	writing(philo, "Is eating");
+	writing_eating(philo, "is eating", philo->ate);
 	philo->ate = philo->ate + 1;
 	philo->last_meal = time_s();
 	ft_usleep(prog->rules.time_eat * 1000);
 	unlock_fork(prog);
+	if (prog->rules.add_max_eat && philo->ate >= prog->rules.nb_eat)
+	{
+		philo->done_eating = 1;
+		sem_post(prog->done);
+		exit(0);
+	}
 }
 
 void	sleeping(t_philo *philo)

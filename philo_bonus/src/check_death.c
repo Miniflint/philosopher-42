@@ -6,16 +6,27 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:27 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 22:17:15 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:50:45 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	lil_sem(t_prog *prog)
+void	*check_all_done(void *arg)
 {
-	sem_post(prog->death);
-	sem_wait(prog->death);
+	t_prog	*a;
+	int		i;
+
+	a = (t_prog *)arg;
+	i = 0;
+	while (i < a->rules.nb_philo)
+	{
+		sem_wait(a->done);
+		i++;
+	}
+	sem_post(a->stop);
+	a->all_done = 1;
+	return (NULL);
 }
 
 void	*ft_check_death(void *arg)
@@ -32,16 +43,10 @@ void	*ft_check_death(void *arg)
 			> prog->rules.time_death)
 		{
 			writing(philo, "Is dead");
-			sem_post(prog->stop);
-			break ;
-		}
-		lil_sem(prog);
-		if (prog->rules.add_max_eat && philo->ate >= prog->rules.nb_eat)
-		{
-			sem_post(prog->stop);
 			break ;
 		}
 		sem_post(prog->death);
 	}
+	sem_post(prog->stop);
 	return (NULL);
 }

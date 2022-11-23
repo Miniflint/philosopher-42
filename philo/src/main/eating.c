@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:44:05 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:24:14 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:14:48 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	eating(t_philo *philo)
 	if (taking_fork(philo))
 		return (1);
 	philo->ate = philo->ate + 1;
+	printf("%d has eaten %d times\n", philo->id + 1, philo->ate);
 	philo->last_meal = time_s();
 	ft_usleep(philo->backup->rules->time_eat);
 	unlock_fork(philo);

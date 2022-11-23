@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:23:55 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:29:13 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@ static int	del_threads(t_prog *prog)
 	return (0);
 }
 
-int	one_philo(t_rules *rules)
-{
-	printf("1\tphilo_1\t%s\n", P_FORKS);
-	usleep(rules->time_eat);
-	printf("%d\tphilo_1\t%s\n", (rules->time_eat / 1000) + 1, "is dead");
-	printf("=======================================\n");
-	return (0);
-}
-
 int	create_threads(t_prog *prog)
 {
 	int		i;
@@ -41,8 +32,6 @@ int	create_threads(t_prog *prog)
 
 	philos = prog->philo;
 	i = 0;
-	if (prog->rules->nb_philo == 1)
-		return (one_philo(prog->rules));
 	while (i < prog->rules->nb_philo)
 	{
 		if (pthread_create(&prog->threads[i], NULL, &routine, &philos[i]))

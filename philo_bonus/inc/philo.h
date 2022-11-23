@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 22:17:15 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:52:59 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			ft_strcmp(char *s1, char *s2);
 // MAIN
 int			__init__(t_prog *prog, char **argv, int max_eat);
 void		writing(t_philo *philo, char *str);
+void		writing_eating(t_philo *philo, char *str, int nb);
 
 // DESTROY
 void		destroy_all(t_prog *prog);

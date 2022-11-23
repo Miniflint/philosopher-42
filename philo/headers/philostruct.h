@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:07:59 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 17:34:23 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:30:26 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct S_prog
 	int				all_ate;
 	struct timeval	*value_time;
 	pthread_mutex_t	writing;
-	pthread_mutex_t	meal_check;
 	pthread_t		*threads;
 	t_rules			*rules;
 	t_philo			*philo;
