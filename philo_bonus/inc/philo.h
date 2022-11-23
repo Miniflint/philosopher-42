@@ -15,7 +15,9 @@
 
 # include "philostruct.h"
 
-int     ft_atoi(char *str);
+int     ft_atoi(char *str); 
 int     __init__(t_prog *prog, char **argv, int max_eat);
 t_prog  *ft_get_prog(t_prog *new_prog);
+void	ft_print_message(int id, t_philo *philo);
+
 #endif

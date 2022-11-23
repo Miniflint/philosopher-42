@@ -20,7 +20,10 @@ int main(int argc, char **argv)
     else if (argc == 6)
         __init__(&prog, argv, ft_atoi(argv[5]));
     else
+    {
+        write(2, "Not enough args", 15);
         return (1);
+    }
     print_rules();
     return (0);
 }
