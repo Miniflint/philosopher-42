@@ -1,22 +1,71 @@
 #include "../../inc/philo.h"
 
-static int  __init__sema(t_prog *prog)
+int __init__sema(t_prog *prog)
 {
     sem_unlink("/philo_forks");
     sem_unlink("/philo_write");
+    sem_unlink("/philo_death");
+    sem_unlink("/philo_stop");
+    prog->forks = sem_open("/philo_forks", O_CREAT, 0666, prog->rules.nb_philo);
+    prog->write = sem_open("/philo_write", O_CREAT, 0666, 1);
+    prog->death = sem_open("/philo_death", O_CREAT, 0666, 1);
+    prog->stop = sem_open("/philo_stop", O_CREAT, 0666, 1);
+    return (0);
 }
+
+void	destroy_all(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	sem_close(prog->death);
+	sem_close(prog->write);
+	sem_close(prog->stop);
+	sem_close(prog->forks);
+	while (i < prog->rules.nb_philo)
+		kill(prog->philo[i++].pid, SIGKILL);
+	free(prog->philo);
+}
+int __init__sema(t_prog *prog)
+{
+    sem_unlink("/philo_forks");
+    sem_unlink("/philo_write");
+    sem_unlink("/philo_death");
+    sem_unlink("/philo_stop");
+    prog->forks = sem_open("/philo_forks", O_CREAT, 0666, prog->rules.nb_philo);
+    prog->write = sem_open("/philo_write", O_CREAT, 0666, 1);
+    prog->death = sem_open("/philo_death", O_CREAT, 0666, 1);
+    prog->stop = sem_open("/philo_stop", O_CREAT, 0666, 1);
+    return (0);
+}
+
+void	destroy_all(t_prog *prog)
+{
+	int	i;
+
+	i = 0;
+	sem_close(prog->death);
+	sem_close(prog->write);
+	sem_close(prog->stop);
+	sem_close(prog->forks);
+	while (i < prog->rules.nb_philo)
+		kill(prog->philo[i++].pid, SIGKILL);
+	free(prog->philo);
+}
+
 
 static void __init__philo(t_prog *prog)
 {
     int i;
 
     i = 0;
-    while (i < prog->rules->nb_philo)
+    while (i < prog->rules.nb_philo)
     {
         prog->philo[i].id = i;
         prog->philo[i].ate = 0;
         prog->philo[i].last_meal = 0;
-//        prog->philo[i].right_fork = 
+        prog->philo[i].dead = 0;
+        prog->philo[i].pid = -1;
         i++;
     }
 }

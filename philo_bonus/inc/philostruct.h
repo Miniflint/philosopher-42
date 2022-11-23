@@ -5,11 +5,11 @@
 
 typedef struct S_philo
 {
-	int		id;
-	int		ate;
+	int			id;
+	int			ate;
+	int			dead;
 	long long	last_meal;
-	sem_t		fork_right;
-	sem_t		*fork_left;
+	pid_t		pid;
 }	t_philo;
 
 typedef struct S_rules
@@ -28,8 +28,12 @@ typedef struct S_prog
 	
 	long long	first_time;
 	t_rules		rules;
-	sem_t		*writing;
 	t_philo		*philo;
+	pthread_t	death_check;
+	sem_t		*write;
+	sem_t		*forks;
+	sem_t		*stop;
+	sem_t		*death;
 }	t_prog;
 
 
