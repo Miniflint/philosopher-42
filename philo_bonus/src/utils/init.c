@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:18 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:21:48 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 21:51:58 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	__init__sema(t_prog *prog)
 	prog->write = sem_open("/philo_write", O_CREAT, 0666, 1);
 	prog->death = sem_open("/philo_death", O_CREAT, 0666, 1);
 	prog->stop = sem_open("/philo_stop", O_CREAT, 0666, 1);
+	sem_unlink("/philo_forks");
+	sem_unlink("/philo_write");
+	sem_unlink("/philo_death");
+	sem_unlink("/philo_stop");
 	return (0);
 }
 

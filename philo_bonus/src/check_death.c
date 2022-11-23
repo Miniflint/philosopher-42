@@ -6,11 +6,17 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:27 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:19:31 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 22:08:54 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+void	lil_sem(t_prog *prog)
+{
+	sem_post(prog->death);
+	sem_wait(prog->death);
+}
 
 void	*ft_check_death(void *arg)
 {
@@ -29,8 +35,7 @@ void	*ft_check_death(void *arg)
 			sem_post(prog->stop);
 			break ;
 		}
-		sem_wait(prog->death);
-		sem_post(prog->death);
+		lil_sem(prog);
 		if (prog->rules.add_max_eat && philo->ate >= prog->rules.nb_eat)
 		{
 			sem_post(prog->stop);

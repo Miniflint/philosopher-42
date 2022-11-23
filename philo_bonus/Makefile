@@ -6,7 +6,7 @@
 #    By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 21:16:03 by tgoel             #+#    #+#              #
-#    Updated: 2022/11/23 21:16:04 by tgoel            ###   ########.fr        #
+#    Updated: 2022/11/23 21:41:25 by tgoel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ clean:
 	@rm -f $(OBJS)
 
 fclean: clean
-	@printf "Deleting executable"
+	@printf "Deleting executable\n"
 	@rm -f $(NAME)
 
 re: fclean all

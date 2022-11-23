@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:20 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:19:42 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 22:01:51 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	routine(t_philo *philo)
 	prog = ft_get_prog(NULL);
 	if (philo->id % 2 == 0)
 		ft_usleep(400);
-	pthread_create(&prog->death_check, NULL, &ft_check_death, philo);
+	pthread_create(&prog->death_check, NULL, ft_check_death, philo);
 	pthread_detach(prog->death_check);
 	while (1)
 	{
@@ -48,10 +48,12 @@ int	create_proc(t_prog *prog)
 
 int	create_prog(t_prog *prog)
 {
+	prog->first_time = time_s();
 	__init__sema(prog);
 	sem_wait(prog->stop);
 	create_proc(prog);
 	sem_wait(prog->stop);
+	destroy_all(prog);
 	return (0);
 }
 
@@ -70,6 +72,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	create_prog(&prog);
-	destroy_all(&prog);
 	return (0);
 }
