@@ -13,6 +13,11 @@ static int	get_diff(struct timeval *start)
 	return (sec * 1000000 + usec);
 }
 
+long long	time_diff(long long past, long long pres)
+{
+	return (pres - past);
+}
+
 void	ft_usleep(long time_to_wait)
 {
 	struct timeval	start;

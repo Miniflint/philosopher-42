@@ -1,7 +1,7 @@
 SRCD	= ./src
 UTILD	= $(SRCD)/utils
 
-SRCF	= main.c timing.c writing.c actions.c
+SRCF	= main.c timing.c writing.c actions.c check_death.c
 UTILF	= ft_atoi.c init.c ft_get_t.c
 
 SRCO	= $(addprefix $(SRCD)/, $(SRCF))
