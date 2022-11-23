@@ -3,6 +3,8 @@
 
 void    routine(t_philo *philo)
 {
+//    if (philo->id % 2 == 0)
+//        ft_usleep(400);
     writing(philo, "Se lance doucement mais surement hehehehehehe");
     while (1)
     {
