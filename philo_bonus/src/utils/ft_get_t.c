@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_t.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/23 21:20:03 by tgoel             #+#    #+#             */
+/*   Updated: 2022/11/23 21:20:35 by tgoel            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/philo.h"
 
-t_prog *ft_get_prog(t_prog *new_prog)
+t_prog	*ft_get_prog(t_prog *new_prog)
 {
-    static t_prog   *prog;
+	static t_prog	*prog;
 
-    if (new_prog)
-        prog = new_prog;
-    return (prog);
+	if (new_prog)
+		prog = new_prog;
+	return (prog);
 }

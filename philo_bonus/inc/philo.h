@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:10:45 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 21:18:35 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "philostruct.h"
 
 // UTILS
-int			ft_atoi(char *str); 
+int			ft_atoi(char *str);
 t_prog		*ft_get_prog(t_prog *new_prog);
 int			__init__sema(t_prog *prog);
 

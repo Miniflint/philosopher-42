@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/23 21:15:54 by tgoel             #+#    #+#             */
+/*   Updated: 2022/11/23 21:19:05 by tgoel            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/philo.h"
 
 void	taking_fork(t_philo *philo)
@@ -39,7 +51,7 @@ void	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	t_prog  *prog;
+	t_prog	*prog;
 
 	prog = ft_get_prog(NULL);
 	writing(philo, "Is sleeping");

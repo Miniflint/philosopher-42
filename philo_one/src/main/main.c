@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 17:43:54 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 21:23:55 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	one_philo(t_rules *rules)
 {
 	printf("1\tphilo_1\t%s\n", P_FORKS);
 	usleep(rules->time_eat);
-	printf("1\tphilo_1\tIs dead\n");
+	printf("%d\tphilo_1\t%s\n", (rules->time_eat / 1000) + 1, "is dead");
 	printf("=======================================\n");
 	return (0);
 }

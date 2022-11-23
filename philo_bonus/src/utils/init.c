@@ -6,30 +6,29 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:18 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 20:57:09 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 21:21:48 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
 
-int __init__sema(t_prog *prog)
+int	__init__sema(t_prog *prog)
 {
 	sem_unlink("/philo_forks");
 	sem_unlink("/philo_write");
 	sem_unlink("/philo_death");
 	sem_unlink("/philo_stop");
-	sem_unlink("/philo_done");
 	prog->forks = sem_open("/philo_forks", O_CREAT, 0666, prog->rules.nb_philo);
 	prog->write = sem_open("/philo_write", O_CREAT, 0666, 1);
 	prog->death = sem_open("/philo_death", O_CREAT, 0666, 1);
 	prog->stop = sem_open("/philo_stop", O_CREAT, 0666, 1);
-	prog->done = sem_open("/philo_done", O_CREAT, 0666, 0);
 	return (0);
 }
 
 void	destroy_all(t_prog *prog)
 {
 	int	i;
+
 	i = 0;
 	sem_close(prog->death);
 	sem_close(prog->write);
@@ -40,9 +39,10 @@ void	destroy_all(t_prog *prog)
 	free(prog->philo);
 }
 
-static void __init__philo(t_prog *prog)
+static void	__init__philo(t_prog *prog)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (i < prog->rules.nb_philo)
 	{
@@ -56,7 +56,7 @@ static void __init__philo(t_prog *prog)
 	}
 }
 
-static int __init__rules(t_rules *rules, char **argv)
+static int	__init__rules(t_rules *rules, char **argv)
 {
 	rules->died = 0;
 	rules->nb_philo = ft_atoi(argv[1]);
@@ -70,7 +70,7 @@ static int __init__rules(t_rules *rules, char **argv)
 	return (0);
 }
 
-int    __init__(t_prog *prog, char **argv, int max_eat)
+int	__init__(t_prog *prog, char **argv, int max_eat)
 {
 	prog->rules.add_max_eat = max_eat;
 	if (__init__rules(&prog->rules, argv))

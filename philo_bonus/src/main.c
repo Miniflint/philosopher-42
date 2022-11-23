@@ -6,41 +6,12 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:20 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 21:11:17 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/23 21:19:42 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 #include <stdio.h>
-
-int		check_philo(t_philo *philo)
-{
-	t_prog	*prog;
-
-	prog = ft_get_prog(NULL);
-	while (1)
-	{
-		if (philo->last_meal && time_diff(philo->last_meal, time_s())
-				> prog->rules.time_death)
-		{
-			writing(philo, "Is dead");
-			sem_post(prog->stop);
-			prog->rules.died = 1;
-			return (0);
-		}
-	}
-	return (0);
-}
-
-void	*routine_death(void *arg)
-{
-	t_philo	*philo;
-
-	philo = (t_philo *)arg;
-	if (!check_philo(philo))
-		sem_post((ft_get_prog(NULL))->stop);
-	return (NULL);
-}
 
 void	routine(t_philo *philo)
 {
@@ -63,6 +34,7 @@ void	routine(t_philo *philo)
 int	create_proc(t_prog *prog)
 {
 	int	i;
+
 	i = 0;
 	while (i < prog->rules.nb_philo)
 	{
