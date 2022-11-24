@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:18 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 00:51:19 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:15:46 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	__init__philo(t_prog *prog)
 	i = 0;
 	while (i < prog->rules.nb_philo)
 	{
-		prog->philo[i].last_meal = 0;
+		prog->philo[i].last_meal = time_s();
 		prog->philo[i].id = i;
 		prog->philo[i].ate = 0;
 		prog->philo[i].done_eating = 0;

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:19:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/23 22:09:01 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 00:59:08 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,4 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (num * neg);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
 }

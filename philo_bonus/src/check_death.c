@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:27 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 00:50:45 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:16:59 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	*ft_check_death(void *arg)
 			> prog->rules.time_death)
 		{
 			writing(philo, "Is dead");
+			prog->rules.died = 1;
 			break ;
 		}
 		sem_post(prog->death);
