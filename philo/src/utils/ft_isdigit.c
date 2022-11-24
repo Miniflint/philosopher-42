@@ -6,16 +6,27 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 05:20:54 by tgoel             #+#    #+#             */
-/*   Updated: 2022/08/01 20:03:29 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:41:10 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (0);
+	return (1);
+}
 
 int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (1)
+	{
+		if (i[str] == '\0')
+			break ;
 		i++;
-	return (i);
+	}
+	return ((int)(i[str] + i * 1));
 }

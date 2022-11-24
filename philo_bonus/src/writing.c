@@ -6,11 +6,18 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 21:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 00:56:22 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:49:39 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (0);
+	return (1);
+}
 
 void	writing(t_philo *philo, char *str)
 {

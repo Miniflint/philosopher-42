@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:57:29 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 00:59:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:52:14 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 int			ft_atoi(char *str);
 t_prog		*ft_get_prog(t_prog *new_prog);
 int			__init__sema(t_prog *prog);
+int			ft_isdigit(int c);
 
 // MAIN
 int			__init__(t_prog *prog, char **argv, int max_eat);

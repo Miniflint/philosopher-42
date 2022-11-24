@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/20 17:36:01 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:48:10 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ int	__init__(t_prog *prog, char **args, int max_eat)
 		handle_error("Error getting the time");
 	if (c_time || !philo || !rules || !create_size_t(prog))
 		return (1);
-	pthread_mutex_init(&prog->meal_check, NULL);
 	return (0);
 }

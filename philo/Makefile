@@ -5,7 +5,7 @@ C=\e[0;36m
 W=\e[0;37m
 
 MSRC	= main.c routine.c eating.c thinking.c sleeping.c timing.c writing.c
-USRC	= ft_strlen.c handle_error.c ft_strdup.c __init__.c ft_atoi.c free_mem.c check_is_dead.c
+USRC	= ft_isdigit.c handle_error.c __init__.c ft_atoi.c free_mem.c check_is_dead.c
 
 ODIR	= ./obj
 MDIR	= ./src/main

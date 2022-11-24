@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 00:29:13 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:55:06 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,28 @@ static void	error_arg(void)
 	write(2, "\n", 1);
 }
 
+int	check_arg(char **av)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (ft_isdigit(av[i][j++]))
+			{
+				write(2, "Not a digit\n", 12);
+				return (1);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int		c_init;
@@ -69,6 +91,8 @@ int	main(int argc, char **argv)
 		error_arg();
 		return (1);
 	}
+	if (check_arg(argv))
+		return (1);
 	if (argc == 6)
 		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)

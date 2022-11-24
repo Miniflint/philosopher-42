@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:20 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 01:16:51 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/11/24 01:54:53 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,35 @@ int	create_prog(t_prog *prog)
 	return (0);
 }
 
+int	check_arg(char **av)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (ft_isdigit(av[i][j++]))
+			{
+				write(2, "Not a digit\n", 12);
+				return (1);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_prog	prog;
 
 	ft_get_prog(&prog);
+	if (check_arg(argv))
+		return (1);
 	if (argc == 5)
 		__init__(&prog, argv, 0);
 	else if (argc == 6)
