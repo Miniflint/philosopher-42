@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 01:48:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2024/11/12 19:59:21 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,25 +76,21 @@ static int	create_size_t(t_prog *prog)
 int	__init__(t_prog *prog, char **args, int max_eat)
 {
 	int			c_time;
-	t_philo		*philo;
-	t_rules		*rules;
 
-	rules = malloc(sizeof(t_rules));
-	if (!rules)
+	prog->rules = malloc(sizeof(t_rules));
+	if (!prog->rules)
 		handle_error("Error mallocing: rules");
-	rules->add_max_eat = max_eat;
-	__init__rules(rules, args);
-	philo = malloc(sizeof(t_philo) * rules->nb_philo);
-	if (!philo)
+	prog->rules->add_max_eat = max_eat;
+	__init__rules(prog->rules, args);
+	prog->philo = malloc(sizeof(t_philo) * prog->rules->nb_philo);
+	if (!prog->philo)
 		handle_error("Error mallocing: philo");
-	__init__philo(philo, rules->nb_philo, prog);
-	prog->philo = philo;
-	prog->rules = rules;
+	__init__philo(prog->philo, prog->rules->nb_philo, prog);
 	prog->all_ate = 0;
 	c_time = __init__time(prog);
 	if (c_time)
 		handle_error("Error getting the time");
-	if (c_time || !philo || !rules || !create_size_t(prog))
+	if (c_time || !prog->philo || !prog->rules || !create_size_t(prog))
 		return (1);
 	return (0);
 }

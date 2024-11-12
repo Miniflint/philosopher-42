@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:06:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 01:55:06 by tgoel            ###   ########.fr       */
+/*   Updated: 2024/11/12 19:59:22 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,9 @@ int	main(int argc, char **argv)
 		c_init = __init__(&prog, argv, ft_atoi(argv[5]));
 	else if (argc == 5)
 		c_init = __init__(&prog, argv, 0);
-	if (c_init)
-		return (1);
-	else if (create_threads(&prog))
+	if (c_init || create_threads(&prog))
 	{
-		handle_error("Error creating / joining threads");
+		handle_error("Error initializing / creating / joining threads");
 		free_mem(&prog);
 		return (1);
 	}
