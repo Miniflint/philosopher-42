@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 06:19:00 by tgoel             #+#    #+#             */
-/*   Updated: 2024/11/12 19:59:21 by trgoel           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:11:18 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ int	__init__(t_prog *prog, char **args, int max_eat)
 {
 	int			c_time;
 
+	prog->rules = NULL;
+	prog->philo = NULL;
+	prog->threads = NULL;
+	prog->value_time = NULL;
 	prog->rules = malloc(sizeof(t_rules));
 	if (!prog->rules)
 		handle_error("Error mallocing: rules");

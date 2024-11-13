@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:18 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 01:15:46 by tgoel            ###   ########.fr       */
+/*   Updated: 2024/11/12 20:15:35 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	destroy_all(t_prog *prog)
 	sem_close(prog->forks);
 	while (i < prog->rules.nb_philo)
 		kill(prog->philo[i++].pid, SIGKILL);
-	free(prog->philo);
+	if (prog->philo)
+		free(prog->philo);
 }
 
 static void	__init__philo(t_prog *prog)
@@ -78,6 +79,8 @@ int	__init__(t_prog *prog, char **argv, int max_eat)
 	if (__init__rules(&prog->rules, argv))
 		return (1);
 	prog->philo = malloc(sizeof(t_prog) * prog->rules.nb_philo);
+	if (!prog->philo)
+		return (1);
 	__init__philo(prog);
 	prog->first_time = time_s();
 	return (0);

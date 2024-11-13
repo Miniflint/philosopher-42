@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:02:58 by tgoel             #+#    #+#             */
-/*   Updated: 2024/11/12 19:59:22 by trgoel           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:15:04 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	free_all_mutex(t_prog *prog)
 
 void	free_mem(t_prog *prog)
 {
-	free_all_mutex(prog);
 	if (prog->rules)
 		free(prog->rules);
 	if (prog->philo)
 		free (prog->philo);
+	free_all_mutex(prog);
 	if (prog->threads)
 		free(prog->threads);
 	if (prog->value_time)

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:19:20 by tgoel             #+#    #+#             */
-/*   Updated: 2022/11/24 01:54:53 by tgoel            ###   ########.fr       */
+/*   Updated: 2024/11/12 20:15:37 by trgoel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,23 @@ int	check_arg(char **av)
 int	main(int argc, char **argv)
 {
 	t_prog	prog;
+	int		rtn;
 
 	ft_get_prog(&prog);
 	if (check_arg(argv))
 		return (1);
 	if (argc == 5)
-		__init__(&prog, argv, 0);
+		rtn = __init__(&prog, argv, 0);
 	else if (argc == 6)
-		__init__(&prog, argv, ft_atoi(argv[5]));
+		rtn = __init__(&prog, argv, ft_atoi(argv[5]));
 	else
 	{
 		write(2, "Not enough args\n", 16);
+		return (1);
+	}
+	if (rtn)
+	{
+		destroy_all(&prog);
 		return (1);
 	}
 	create_prog(&prog);
